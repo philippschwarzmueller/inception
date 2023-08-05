@@ -1,3 +1,10 @@
 services:
   nginx:
-    build: ./nginx_container/
+    build: ./requirements/nginx/
+  wordpres:
+    build: ./requirements/wordpress/
+  mariadb:
+    build: ./requirements/mariadb/
+#secrets:
+#  mariadb_password:
+#    file: ./.env
