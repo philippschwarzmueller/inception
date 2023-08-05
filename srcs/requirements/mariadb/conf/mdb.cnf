@@ -1,0 +1,10 @@
+[client-server]
+socket=/tmp/mysql.sock
+port=3306
+[client]
+password=my_password
+[mysqld]
+datadir=/var/lib/mysql
+language=/usr/local/share/mysql/english
+log-basename=mysqld
+general-log
