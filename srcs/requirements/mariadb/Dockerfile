@@ -14,4 +14,5 @@ RUN /etc/init.d/mariadb setup
 
 # default wise there are two all-privilege user accounts: root and mysql 
 # @ localhost, both without pwd but you need to be in the corresponding usergroup
+EXPOSE 1337
 ENTRYPOINT [ "sleep", "infinity" ]
