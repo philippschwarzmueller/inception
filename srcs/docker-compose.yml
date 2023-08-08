@@ -1,10 +1,32 @@
 services:
   nginx:
     build: ./requirements/nginx/
-  wordpres:
+    ports:
+      - "443:443"
+    networks:
+      - botnet
+    volumes:
+      - wordpress_vol:/var/www/
+  wordpress:
     build: ./requirements/wordpress/
+    networks:
+      - botnet
+    volumes:
+      - wordpress_vol:/var/www/
   mariadb:
     build: ./requirements/mariadb/
+    networks:
+      - botnet
 #secrets:
 #  mariadb_password:
 #    file: ./.env
+networks:
+  botnet:
+    driver: bridge
+volumes:
+  wordpress_vol:
+    driver: "local"
+    driver_opts:
+      type: "none"
+      #o: "bind"
+      device: "/home/pschwarz/www"
