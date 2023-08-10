@@ -4,6 +4,8 @@ RUN openrc
 RUN touch /run/openrc/softlevel
 COPY conf/mdb.cnf /etc/my.cnf.d/my.cnf
 RUN /etc/init.d/mariadb setup
+COPY tools/mdb_setup.sh /
+RUN chmod +x mdb_setup.sh && ./mdb_setup.sh;
 # then start it with rc-service mariadb start
 
 # You can start the MariaDB daemon with:
@@ -14,5 +16,5 @@ RUN /etc/init.d/mariadb setup
 
 # default wise there are two all-privilege user accounts: root and mysql 
 # @ localhost, both without pwd but you need to be in the corresponding usergroup
-EXPOSE 1337
-ENTRYPOINT [ "sleep", "infinity" ]
+EXPOSE 3306
+ENTRYPOINT [ "sleep", "infinity"]
