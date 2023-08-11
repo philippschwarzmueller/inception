@@ -29,4 +29,5 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 RUN wp core download --allow-root
 COPY tools/setup.sh /setup.sh
 RUN chmod +x /setup.sh;
+RUN apk update && apk add mariadb-client
 ENTRYPOINT ["/setup.sh"]

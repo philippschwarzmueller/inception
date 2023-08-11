@@ -13,9 +13,9 @@
 # in /etc/php81/php-fpm.d/www.conf change listen to 9000 only - thanks ole
 # php-fpm81 - to start the fpm
 sed -i "s/listen = 127.0.0.1:9000/listen = 9000/g" /etc/php81/php-fpm.d/www.conf
-sleep 1
+sleep 10
 #needs to be run in foreground entrypoint later
 #maybe add force on config create
-wp config create --allow-root --dbname=wp_db --dbuser=wp-user --dbpass=password --dbhost=srcs-mariadb-1:3306
+wp config create --allow-root --dbname=wp_db --dbuser=wp-user --dbpass=password --dbhost=srcs-mariadb-1:3306 --force
 wp core install --title=test --url=localhost --admin_user=wp-admin --admin_password=admin-pass --admin_email=admin@email.de --allow-root
 php-fpm81 -F
