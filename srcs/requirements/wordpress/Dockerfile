@@ -19,8 +19,14 @@ php81-ldap \
 php81-ctype \
 php81-dom \
 php81-simplexml \
-php81-fpm
+php81-fpm \
+php81-phar \
+php81
+WORKDIR /var/www/wordpress
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /usr/local/bin/wp
+RUN wp core download --allow-root
 COPY tools/setup.sh /setup.sh
-RUN chmod +x /setup.sh; /setup.sh
-RUN apk update && apk add mariadb-client
-ENTRYPOINT [ "sleep", "infinity" ]
+RUN chmod +x /setup.sh;
+ENTRYPOINT ["/setup.sh"]
