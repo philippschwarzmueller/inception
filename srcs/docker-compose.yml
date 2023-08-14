@@ -11,6 +11,7 @@ services:
       - wordpress_vol:/var/www/
     env_file:
       - .env
+    restart: on-failure
   wordpress:
     depends_on:
       - mariadb
@@ -21,6 +22,7 @@ services:
       - wordpress_vol:/var/www/
     env_file:
       - .env
+    restart: on-failure
   mariadb:
     build: ./requirements/mariadb/
     networks:
@@ -29,9 +31,7 @@ services:
       - database_vol:/var/lib/mysql
     env_file:
       - .env
-#secrets:
-#  mariadb_password:
-#    file: ./.env
+    restart: on-failure
 networks:
   botnet:
     driver: bridge
@@ -41,10 +41,10 @@ volumes:
     driver_opts:
       type: "none"
       o: "bind"
-      device: "/home/pschwarz/db"
+      device: "/home/pschwarz/data/db"
   wordpress_vol:
     driver: "local"
     driver_opts:
       type: "none"
       o: "bind"
-      device: "/home/pschwarz/www"
+      device: "/home/pschwarz/data/www"
