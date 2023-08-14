@@ -9,8 +9,6 @@ services:
       - botnet
     volumes:
       - wordpress_vol:/var/www/
-    env_file:
-      - .env
     restart: on-failure
   wordpress:
     depends_on:
@@ -41,10 +39,10 @@ volumes:
     driver_opts:
       type: "none"
       o: "bind"
-      device: "/home/pschwarz/data/db"
+      device: "$HOME/data/db"
   wordpress_vol:
     driver: "local"
     driver_opts:
       type: "none"
       o: "bind"
-      device: "/home/pschwarz/data/www"
+      device: "$HOME/data/www"
