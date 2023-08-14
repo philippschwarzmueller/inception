@@ -1,6 +1,7 @@
 FROM alpine:3.18
 # install worpress' recommended php extensions
-RUN apk update && apk add php81 \
+RUN apk update && apk add mariadb-client \
+php81 \
 php81-common \
 php81-curl \
 php81-dom \

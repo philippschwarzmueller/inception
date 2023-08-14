@@ -1,5 +1,6 @@
 services:
   nginx:
+    container_name: nginx
     depends_on: 
       - wordpress
     build: ./requirements/nginx/
@@ -11,6 +12,7 @@ services:
       - wordpress_vol:/var/www/
     restart: on-failure
   wordpress:
+    container_name: wordpress
     depends_on:
       - mariadb
     build: ./requirements/wordpress/
@@ -22,6 +24,7 @@ services:
       - .env
     restart: on-failure
   mariadb:
+    container_name: mariadb
     build: ./requirements/mariadb/
     networks:
       - botnet
