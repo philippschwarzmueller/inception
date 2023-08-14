@@ -6,16 +6,5 @@ COPY conf/mdb.cnf /etc/my.cnf.d/my.cnf
 RUN /etc/init.d/mariadb setup
 COPY tools/mdb_setup.sh /
 RUN chmod +x mdb_setup.sh
-#&& ./mdb_setup.sh;
-# then start it with rc-service mariadb start
-
-# You can start the MariaDB daemon with:
-# cd '/usr' ; /usr/bin/mariadb-safe --datadir='/var/lib/mysql'
-
-# to start mariadbd at boot time you have to copy support-files/mariadb.service 
-# to the right place for your system
-
-# default wise there are two all-privilege user accounts: root and mysql 
-# @ localhost, both without pwd but you need to be in the corresponding usergroup
 EXPOSE 3306
 ENTRYPOINT ["/mdb_setup.sh"]

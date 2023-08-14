@@ -8,4 +8,4 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PASS}';"
 rc-service mariadb start;
 mariadb -u root < maria;
 mysqladmin -u root shutdown;
-mariadbd -u root --bind-address=0.0.0.0;
+mariadbd -u root;
