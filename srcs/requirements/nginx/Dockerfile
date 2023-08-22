@@ -6,4 +6,4 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 	-subj "/C=DE/ST=Wuerttemberg/L=Heilbronn/O=42ggmbh/OU=students/CN=pschwarz"
 COPY conf/nginx.conf /etc/nginx/
 EXPOSE 443
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
